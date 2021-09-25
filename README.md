@@ -1,16 +1,15 @@
 # navigator_with_bloc
 
-A new Flutter project.
+Test-Task
 
-## Getting Started
+Implement current pages:
+https://www.figma.com/proto/vSoA5Jkjedpfv6MjFLmoJ9/apptest?node-id=1%3A27&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A27 
 
-This project is a starting point for a Flutter application.
+Description:
 
-A few resources to get you started if this is your first Flutter project:
+Using the Flutter framework build a test app containing three screens (see link above).
+Use BLoC library to navigate screens(based on states).
+The last screen should show a summary of selections from the previous two in a text field.
+Create a git repository containing your code.
+Provide the link.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

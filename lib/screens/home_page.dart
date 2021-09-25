@@ -4,9 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:navigator_with_bloc/widgets/home_containers.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
@@ -24,7 +29,7 @@ class HomePage extends StatelessWidget {
               headerText: "Track my period",
               subText: "contraception and wellbeing",
               onTapForNavigating: () {
-                print("first screen");
+                Navigator.pushNamed(context, "/second");
               },
             ),
             // ignore: prefer_const_constructors
@@ -32,7 +37,7 @@ class HomePage extends StatelessWidget {
               headerText: "Get pregnant",
               subText: "learn about reproductive health",
               onTapForNavigating: () {
-                print("second screen");
+                Navigator.of(context).pushNamed("/second");
               },
             )
           ],

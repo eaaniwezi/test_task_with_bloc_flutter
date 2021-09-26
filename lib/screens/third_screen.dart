@@ -1,6 +1,5 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ThirdScreen extends StatefulWidget {
   final String result;
@@ -15,15 +14,38 @@ class _ThirdScreenState extends State<ThirdScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // ignore: prefer_const_constructors
-            Text("Your date of birth is"),
-            // ignore: prefer_const_constructors
-            Text(widget.result)
-          ],
+        child: Container(
+          height: 100,
+          decoration: BoxDecoration(
+              color: Colors.pink.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(18)),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // ignore: prefer_const_constructors
+                Text(
+                  "Your date of birth is",
+                  style: GoogleFonts.signikaNegative(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                // ignore: prefer_const_constructors
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    widget.result,
+                    style: GoogleFonts.signikaNegative(
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

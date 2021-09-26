@@ -1,8 +1,8 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:navigator_with_bloc/bloc/navigator_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:navigator_with_bloc/bloc/navigation_bloc.dart';
 import 'package:navigator_with_bloc/screens/third_screen.dart';
 
 class SecondScreen extends StatefulWidget {
@@ -18,18 +18,23 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          // ignore: prefer_const_literals_to_create_immutables
-          children: [
-            _textHeader(),
-            _calendarContainer(),
-            _nextButton(),
-          ],
-        ),
+      body: BlocConsumer<NavigationBloc, Screen>(
+        listener: (context, screen) {},
+        builder: (context, screen) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                _textHeader(),
+                _calendarContainer(),
+                _nextButton(),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
@@ -47,14 +52,13 @@ class _SecondScreenState extends State<SecondScreen> {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.5,
       child: CupertinoDatePicker(
-        minimumYear: 1980,
+        minimumYear: 1600,
         maximumYear: DateTime.now().year,
         initialDateTime: dateTime,
         mode: CupertinoDatePickerMode.date,
         onDateTimeChanged: (dateTime) {
           setState(() {
             this.dateTime = dateTime;
-            // print("this is " + dateTime.toString());
           });
         },
       ),
@@ -65,11 +69,10 @@ class _SecondScreenState extends State<SecondScreen> {
     return InkWell(
       onTap: () {
         final value = DateFormat('yyyy/MM/dd').format(dateTime);
-        print(value);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ThirdScreen(
-          result: value
-        )));
-        // Navigator.pushNamed(context, "/third");
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ThirdScreen(result: value)));
       },
       child: Container(
         height: 52,

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:navigator_with_bloc/bloc/navigation_bloc.dart';
 import 'package:navigator_with_bloc/screens/home_page.dart';
 import 'package:navigator_with_bloc/screens/second_screen.dart';
-import 'package:navigator_with_bloc/screens/third_screen.dart';
-import 'package:navigator_with_bloc/cubit/cubit/nav_state_cubit.dart';
 
 void main() {
   // ignore: prefer_const_constructors
@@ -18,43 +17,36 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final NavStateCubit _navStateCubit = NavStateCubit();
+  // final NavCubit _navStateCubit = NavCubit();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<NavStateCubit>(
+    return BlocProvider<NavigationBloc>(
       lazy: false,
-      create: (context) => NavStateCubit(),
+      create: (context) => NavigationBloc(Screen.screen_one),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        routes: {
-          '/': (context) => BlocProvider.value(
-                value: _navStateCubit,
-                // ignore: prefer_const_constructors
-                child: HomePage(),
-              ),
-          '/second': (context) => BlocProvider.value(
-                value: _navStateCubit,
-                // ignore: prefer_const_constructors
-                child: SecondScreen(),
-              ),
-          // '/third': (context) => BlocProvider.value(
-          //       value: _navStateCubit,
-          //       // ignore: prefer_const_constructors
-          //       child: ThirdScreen(),
-          //     ),
-        },
+        home: BlocBuilder<NavigationBloc, Screen>(
+          builder: (context, screen) {
+            return _buildScreen(screen);
+          },
+        ),
       ),
     );
   }
 
-  @override
-  void dispose() {
-    _navStateCubit.close();
-    super.dispose();
+  _buildScreen(Screen screen) {
+    if (screen == Screen.screen_one) {
+      // ignore: prefer_const_constructors
+      return HomePage();
+    } else if (screen == Screen.screen_two) {
+      // ignore: prefer_const_constructors
+      return SecondScreen();
+    }
+    return Container();
   }
 }

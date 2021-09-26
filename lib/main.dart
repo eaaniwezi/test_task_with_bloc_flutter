@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:navigator_with_bloc/cubit/cubit/nav_state_cubit.dart';
 import 'package:navigator_with_bloc/screens/home_page.dart';
 import 'package:navigator_with_bloc/screens/second_screen.dart';
+import 'package:navigator_with_bloc/screens/third_screen.dart';
+import 'package:navigator_with_bloc/cubit/cubit/nav_state_cubit.dart';
 
 void main() {
   // ignore: prefer_const_constructors
@@ -41,6 +42,11 @@ class _MyAppState extends State<MyApp> {
                 // ignore: prefer_const_constructors
                 child: SecondScreen(),
               ),
+          // '/third': (context) => BlocProvider.value(
+          //       value: _navStateCubit,
+          //       // ignore: prefer_const_constructors
+          //       child: ThirdScreen(),
+          //     ),
         },
       ),
     );

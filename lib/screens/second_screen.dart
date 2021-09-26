@@ -2,6 +2,8 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:navigator_with_bloc/bloc/navigator_bloc.dart';
+import 'package:navigator_with_bloc/screens/third_screen.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key}) : super(key: key);
@@ -64,6 +66,10 @@ class _SecondScreenState extends State<SecondScreen> {
       onTap: () {
         final value = DateFormat('yyyy/MM/dd').format(dateTime);
         print(value);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ThirdScreen(
+          result: value
+        )));
+        // Navigator.pushNamed(context, "/third");
       },
       child: Container(
         height: 52,

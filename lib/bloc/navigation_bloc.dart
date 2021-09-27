@@ -1,11 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// ignore: constant_identifier_names
 enum Screen { screen_one, screen_two, screen_three }
 
 class NavigationBloc extends Bloc<int, Screen> {
   NavigationBloc(Screen initialState) : super(Screen.screen_one);
-
-  // NavigationBloc() : super(null);
 
   Screen get initialState => Screen.screen_one;
   @override

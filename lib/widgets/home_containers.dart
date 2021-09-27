@@ -8,7 +8,10 @@ class HomeContainers extends StatelessWidget {
   final String subText;
   final Function onTapForNavigating;
   const HomeContainers(
-      {Key? key, required this.headerText, required this.subText, required this.onTapForNavigating})
+      {Key? key,
+      required this.headerText,
+      required this.subText,
+      required this.onTapForNavigating})
       : super(key: key);
 
   @override
@@ -22,10 +25,9 @@ class HomeContainers extends StatelessWidget {
             color: Colors.pink.withOpacity(0.1),
             borderRadius: BorderRadius.circular(18)),
         child: InkWell(
-          // onTap: () {
-          //    Navigator.pushNamed(context, "/second");
-          // },
-          onTap: () {onTapForNavigating();},
+          onTap: () {
+            onTapForNavigating();
+          },
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
